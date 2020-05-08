@@ -4,7 +4,7 @@
 ###### Dito isto explicar o funcionamento do protocolo HTPP-Hypertext Transfer Protocol, o qual é a base da World Wide Web.
 ### O que é:
 ###### O HTTP é um protocolo da camada de aplicação do modelo TCP/IP, ele foi inventado para que houvesse uma transmissão de dados na World Wide Web.
-###Funcionamento:
+### Funcionamento:
 ###### Este protocolo funciona em cima de um modelo chamado Cliente-Servidor, nele o cliente faz requisições de serviços ou recursos para um servidor. Uma analogia deste modelo no mundo real seriam as pizzarias[servidor] as quais, aguardam as requisições de pizzas, para assim, poderem produzi-las e enviá-las para o cliente.
 ![Fonte:https://upload.wikimedia.org/wikipedia/commons/1/1c/Cliente-Servidor.png](https://upload.wikimedia.org/wikipedia/commons/1/1c/Cliente-Servidor.png)
 ###### O HTTP funciona de forma parecida, ao cliente[usuário] acessar um site, o mesmo cria uma conexão e envia para o servidor uma mensagem de *requisição HTTP* solicitando a página web, e o servidor o responde com a mesma.
