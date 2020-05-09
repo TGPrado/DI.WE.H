@@ -61,3 +61,10 @@ Os mais comuns são:
 ###### Accept-Language - Indica qual linguagem o cliente entende, geralmente usado para definir se uma página estará em português ou inglês, por exemplo.
 ###### Connection - Define se a conexão com o servidor deve ser mantida para futuras requests ou não, no primeiro caso seu valor é keep-alive, no segundo close.
 ###### Cookie - Funcionam como um identificador de sessão; Por definição o HTTP é um protocolo stateless, isso significa que ele não mantém estado, ou seja se você fizer login na sua rede social e tentar fazer outra ação como, mandar uma mensagem, você teria que se autenticar de novo, pois nao há nada que defina você como logado, por isto foram definidos os cookies, com eles o usuário não precisa se autenticar toda a vez. Entretanto, eles precisam ser enviados em todas as requests subsequentes.
+
+### HTTP vs. HTTPS:
+
+A diferença entre o Hypertext Transfer Protocol e o Hyper Text Transfer Protocol Secure, como o pŕoprio nome nos induz é na questão da segurança, o segundo é uma junção do HTTP e do protocolo SSL/TLS,o último permite que dados sejam transmitidos por meio de uma conexão criptografada e que o servidor e o cliente sejam autenticos. O HTTPS se fez necessário pois, principalmente as conexões Wi-fi estão sucetíveis a ataques Man-in-the-Middle na qual um atacante engana o servidor e o cliente para enviarem as request e responses para ele vide a imagem:
+
+![](https://std1.bebee.com/br/pb/83771/db1a1182/900)
+###### Fonte: https://std1.bebee.com/br/pb/83771/db1a1182/900
