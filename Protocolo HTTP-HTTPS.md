@@ -60,7 +60,47 @@ Os mais comuns são:
 ###### Content-Type - Indica qual o tipo de dado que o servidor ou o cliente esta enviando. Ex: text/plain; application/json
 ###### Accept-Language - Indica qual linguagem o cliente entende, geralmente usado para definir se uma página estará em português ou inglês, por exemplo.
 ###### Connection - Define se a conexão com o servidor deve ser mantida para futuras requests ou não, no primeiro caso seu valor é keep-alive, no segundo close.
-###### Cookie - Funcionam como um identificador de sessão; Por definição o HTTP é um protocolo stateless, isso significa que ele não mantém estado, ou seja se você fizer login na sua rede social e tentar fazer outra ação como, mandar uma mensagem, você teria que se autenticar de novo, pois nao há nada que defina você como logado, por isto foram definidos os cookies, com eles o usuário não precisa se autenticar toda a vez. Entretanto, eles precisam ser enviados em todas as requests subsequentes.
+###### Cookie - Funcionam como um identificador e mantenedor de sessão; Por definição o HTTP é um protocolo stateless, isso significa que ele não mantém estado, ou seja se você fizer login na sua rede social e tentar fazer outra ação como, mandar uma mensagem, você teria que se autenticar de novo, pois nao há nada que defina você como logado, por isto foram definidos os cookies, com eles o usuário não precisa se autenticar toda a vez. Entretanto, eles precisam ser enviados em todas as requests subsequentes.
+###### Referer - Contém o endereço de onde a requisição foi originada. Isto é usado pelo servidor para saber de onde os visitantes de seu site se originam.
+###### Origin - Este header é muito parecido com o Referer, pois ambos indicam e onde a solicitação foi originada, no entando este indica só o nome do site, não o caminho todo. Exemplo: Referer: exemplo.com/artigos/protocolo%20HTTP%20HTTPS Origin: exemplo.com
+
+Enviada uma request, agora analisaremos a response do servidor.
+
+```
+HTTP/1.1 200 OK
+Date: Mon, 11 May 2020 19:45:35 GMT
+Expires: -1
+Cache-Control: private, max-age=0
+Content-Type: text/html; charset=UTF-8
+Strict-Transport-Security: max-age=31536000
+Server: gws
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: 
+Connection: close
+Content-Length: 194814
+```
+Essa é a response para a primeira request deste artigo, além deste conteúdo, há também um body o qual não anexarei por ser muito grande.
+
+Vamos analisar os header desta response,na primeira linha há duas coisas, a versão do protocolo HTTP usado e o status da response, eles podem ser as seguintes:
+
+###### 1XX: Passa informações, se a solicitação foi aceita, ou se o processo continua em desenvolvimento.
+###### 2XX: A solicitação foi executada com sucesso.
+###### 3XX: Indica que há a necessidade de redirecionamento para que a solicitação possa ser concluída.
+###### 4XX: Mostra que houve um erro na solicitação por parte do cliente.
+###### 5XX: Indica que o servidor não pôde responder a solicitação.
+
+As seguintes linhas mostram headers comuns das responses, sendo eles:
+
+###### Date: Data em que a response foi originada.
+###### Expires: Indica quando o conteúdo deve ser considerado desatualizado, neste caso o valor -1 significa que o conteúdo expira imediatamente após ser enviado.
+###### Cache-Control: Define políticas de cache.
+###### Etag: Identifica uma versão específica de algum recurso, ele permite que um servidor não envie a resposta completa, o que permite uma maior velocidade.
+###### Server: Define informações sobre o servidor.
+###### Set-Cookie: Usado para o servidor, enviar cookies para o cliente.
+###### X-Frame-Options: Indica se o navegador deve ou não renderizar uma página em ```<frame>```,```<iframe>```.
+
+
+
 
 ### HTTP vs. HTTPS:
 

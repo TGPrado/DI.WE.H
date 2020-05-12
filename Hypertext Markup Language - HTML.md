@@ -54,4 +54,6 @@ Dentre as tags html, existem algumas que usaremos muito daqui para frente, sendo
 
 ```<input></input>``` : O input nos permite inserir um local para que o usuário possa digitar algo, seja seu email, sua senha, ou até mesmo um input para pesquisa em um site.
 
+```<iframe></iframe>``` : Permite a inserção de outros documentos ao documento HTML atual, ou seja, permite a inserção de sites dentro de sites.
+
 Dentro das tags html, existem também o conceito de elementos e atributos, os primeiros são basicamente um bloco de construção HTML, eles são compostos por tags de início e fim e seu conteúdo, por exemplo isto é um elemento: ```<h1>Ola mundo!</h1>```. Os atributos são informações sobre os elementos, o "src" usado na tag ```<img>``` é um atributo.
