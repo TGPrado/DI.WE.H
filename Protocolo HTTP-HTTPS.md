@@ -2,7 +2,7 @@
 ## Começando do começo...
 Para que possamos hackear alguma coisa devemos primeiro, entender como ela funciona.
 
-Dito isto explicar o funcionamento do protocolo HTPP-Hypertext Transfer Protocol, o qual é a base da World Wide Web.
+Dito isto explicarei o funcionamento do protocolo HTTP-Hypertext Transfer Protocol, o qual é a base da World Wide Web.
 ### O que é:
 O HTTP é um protocolo da camada de aplicação do modelo TCP/IP, ele foi inventado para que houvesse uma transmissão de dados na World Wide Web.
 ### Funcionamento:
@@ -10,9 +10,9 @@ Este protocolo funciona em cima de um modelo chamado Cliente-Servidor, nele o cl
 ![](https://upload.wikimedia.org/wikipedia/commons/1/1c/Cliente-Servidor.png)
 ###### Fonte:https://upload.wikimedia.org/wikipedia/commons/1/1c/Cliente-Servidor.png
 
- O HTTP funciona de forma parecida, ao cliente[usuário] acessar um site, o mesmo cria uma conexão e envia para o servidor uma mensagem de *requisição HTTP* solicitando a página web, e o servidor o responde com a mesma.
+O HTTP funciona de forma parecida, ao cliente[usuário] acessar um site, o mesmo cria uma conexão e envia para o servidor uma mensagem de *requisição HTTP* solicitando a página web, e o servidor o responde com a mesma, então o navegador interpreta e renderida a página HTML.
 ### Funcionamento técnico:
- O método usado pelo HTTP para enviar as requisições e as respostas, a partir de agora as chamarei de resquests e responses, respectivamente.
+ Entendido o sistema Cliente-Servidor, mostrarei exemplos de requisições[requests] e repostas[responses] aplicadas no protocolo HTTP.
  
  Este é um exemplo de request:
 ```
