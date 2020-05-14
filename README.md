@@ -8,5 +8,5 @@
 * [Open Redirect Vulnerability](Open%20Redirect%20Vulnerability.md)
 * [Cross-Site Request Forgery](Cross-Site%20Request%20Forgery.md)
 * [HTTP Parameter Pollution](HTTP%20Parameter%20Pollution.md)
-* HTML Injection
+* [HTML Injection](HTML%20Injection.md)
 * Cross-Site Scripting 
