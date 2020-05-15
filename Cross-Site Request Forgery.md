@@ -33,7 +33,7 @@ Vamos entender o que esta página maliciosa está fazendo, o atributo src da tag
 
 O mesmo tipo de ataque pode ser feito via post, neste caso a request feita pelo banco seria parecida com esta:
 
-```
+```http
 POST / HTTP/1.1 
 Host: banco.com/transfer
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:76.0) Gecko/20100101 Firefox/76.0
@@ -79,7 +79,7 @@ No entanto, não são todas as requests que "ativam" o CORS, as mais simples com
 
 Em 2016, o pesquisador Akhil Reni encontrou uma falha no Shopify que permitia desconectar um usuário de seu Twitter, para isso Akhil analisou como funcionava o processo de logout shopify, e percebeu que o mesmo realizava uma request do tipo GET para a seguinte url: https://twitter-commerce.shopifyapps.com/auth/twitter/disconnect segue um exemplo da request:
 
-```
+```http
 GET /auth/twitter/disconnect HTTP/1.1
 Host: twitter-commerce.shopifyapps.com
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:43.0) Gecko/20100101 Firefox/43.0

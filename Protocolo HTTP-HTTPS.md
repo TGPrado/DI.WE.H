@@ -15,7 +15,7 @@ O HTTP funciona de forma parecida, ao cliente[usuário] acessar um site, o mesmo
  Entendido o sistema Cliente-Servidor, mostrarei exemplos de requisições[requests] e repostas[responses] aplicadas no protocolo HTTP.
  
  Este é um exemplo de request:
-```
+```http
 GET / HTTP/1.1
 Host: www.google.com
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:76.0) Gecko/20100101 Firefox/76.0
@@ -27,7 +27,7 @@ Cookie:
 A princípio isto pode parecer confuso, mas vamos simplificar. 
 
 Tudo o que está escrito acima representa o cabeçalho/header da request ele é usado para enviar todas as informações necessárias para que a conexão ocorra corretamente, além do header podem ser anexados também um corpo/body, nele são colocados os dados que o usuário deseja enviar para o servidor, esses dados são separados por uma linha em branco do header,exemplo:
-```
+```http
 POST / HTTP/1.1 
 Host: localhost:8000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:76.0) Gecko/20100101 Firefox/76.0
@@ -66,7 +66,7 @@ Os mais comuns são:
 
 Enviada uma request, agora analisaremos a response do servidor.
 
-```
+```http
 HTTP/1.1 200 OK
 Date: Mon, 11 May 2020 19:45:35 GMT
 Expires: -1
