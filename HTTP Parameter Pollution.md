@@ -5,7 +5,7 @@ O HTTP Parameter Pollution, ou HPP, ocorre quando um atacante manipula os parâm
 
 Esta falha já existe a bastante tempo, entretanto nos últimos anos, devido ao aumento da complexidade dos sites, houve também um aumento no número de parâmetros o que trouxe esta vulnerabilidade de volta à tona.
 
-### Funcionamente técnico:
+### Funcionamento técnico:
 
 No artigo sobre Client e Server side expliquei como o servidor faz para pegar os parâmetros enviados à ele, mas o que acontece se, por exemplo, duplicarmos um parâmetro? Como a aplicação reagirá? Cada aplicação reage de uma forma diferente a esse problema, se usarmos php + apache será usado o último parâmetro, se for usado ASP.NET + IIS será usado uma concatenação de todos os parâmetros repetidos. Segue imagem da tabela de tratamento das linguagens e servidores:
 
@@ -20,18 +20,18 @@ Caso o atacante esteja usando uma proxy para modificar as requests é necessári
 
 Caracter | Codificação 	|	Caracter | Codificação|
 -------- | -------------|   -------- | -----------|
-espaço   |     %20		|	```#```  |     %23    |
-$        |     %24      |	   %     |	   %25	  |
-&        |     %26      |      @     |	   %40	  |
-`        |     %60		|	   /     |     %2F    |
-:        |     %3A      |      ;     |     %3B	  |
-<        |     %3C      |	   =     |     %3D	  |
-```>```  |     %3E      |      ?     |     %3F    |
-[        |     %5B      |      \     |     %5C	  |
-]        |     %5D      |      ^     |     %5E	  |
-{        |     %7B      |   ```|```  |     %7C	  |
-}        |     %7D      |      ~     |     %7E	  |
-+        |     %2B		|	   ,     |     %2C	  |
+espaço   |     ```%20```			|	```#```  |     ```%23```    |
+```$```        |     ```%24```      |	   ```%```     |	   ```%25```	  |
+```&```        |     ```%26```      |      ```@```     |	   ```%40```	  |
+`       |     ```%60```		|	   ```/```     |     ```%2F```    |
+```:```        |     ```%3A```      |      ```;```     |     ```%3B```	  |
+```<```        |     ```%3C```      |	   ```=```     |     ```%3D```	  |
+```>```  |     ```%3E```      |      ```?```     |     ```%3F```    |
+```[```        |     ```%5B```      |      ```\```     |     ```%5C```	  |
+```]```     |     ```%5D```      |      ```^```     |     ```%5E```	  |
+```{```        |     ```%7B```      |   ```|```  |     ```%7C```	  |
+```}```        |     ```%7D```      |      ```~```     |     ```%7E```	  |
+```+```        |     ```%2B```		|	   ```,```     |     ```%2C```	  |
 
 	
 Esta vulnerabilidade fica mais interessante quando ela é atrelada a outras,por exemplo, o atacante pode manipular os parâmetros para "bypassar" filtros e injetar códigos SQL, que é uma linguagem de programação usada para lidar com banco de dados, então imagine o atacante retornar toda a base de usuarios e senhas de uma rede social, esta vulnerabilidade tem um nome específico: SQL injection, ela será explicada mais para frente.

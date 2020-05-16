@@ -6,7 +6,7 @@ Cross-Site Request Forgery-CSRF, ou falsificação de requisição entre sites, 
 
 ![](https://i.imgur.com/kq6Tq54.png)
 ###### Fonte: https://www.infosec.com.br/wp-content/uploads/2017/07/cross-site-request-forgery.png
-### Funcionamento técnico
+### Funcionamento técnico:
 
 Para um melhor entendimento desta vulnerabilidade, vou dar um exemplo. 
 
