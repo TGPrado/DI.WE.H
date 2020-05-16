@@ -85,4 +85,6 @@ PoC:![](https://i.imgur.com/0lEiNeb.png)
 
 Para explorar esta vulnerabilidade o pesquisador deve estar atento as requests e as responses da aplicação, para perceber quando alguns parâmetros estão sendo refletidos, para então, tentar montar um payload.
 
-É interessante notar que esta vulnerabilidade pode gerar problemas como HTML Injection, Cross-Site Scripting e erros de logs no servidor, logo para extrair o máximo deste problema, esteja atento a todos estes problemas.
+Acima, comentei que este erro é encontrado bastante no set-cookie, mas ele também pode ser encontrado no header Location e no header da request, de modo a editá-la antes de enviar ao servidor.
+
+É interessante notar que esta vulnerabilidade pode gerar problemas como HTML Injection, Cross-Site Scripting e erros de logs no servidor, logo para extrair o máximo deste problema, esteja atento a tudo que ele pode afetar.
