@@ -115,5 +115,5 @@ Para explorar esta vulnerabilidade o pesquisador deve estar atento ao parâmetro
 
 Também é interessante notar como o filtro esta reagindo aos parâmetros com carateres especiais, alguns simplesmente os excluem para estes, tente adicionar um URL encode dentro de outro, por exemplo, sabendo que ```%3C``` corresponde a ```<``` tente então injetar ```%3%3CC```.
 
-Acima, dei um exemplo de filtros server side, agora quando eles estiverem no client side tente usar um proxy para interceptar e modificar a request depois que ela já passou por pelo filtro.
+Acima, dei um exemplo de filtros server side, agora quando eles estiverem no client side tente usar um proxy para interceptar e modificar a request depois que ela já passou pelo filtro.
 	
