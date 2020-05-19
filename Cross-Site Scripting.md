@@ -109,7 +109,7 @@ Este é o exemplo do HTML de uma página vulnerável:
 </html>
 ```
 
-A parte vulnerável fica dentro da tag script, nela é criada uma variavel chamada pos, e nela é contido tudo digitado após o "=",  depois tudo digitado é escrito na página usando o comando "document.write". A url com o ataque é parecida com esta:
+A parte vulnerável fica dentro da tag script, nela é criada uma variável chamada pos, e nela é contido tudo digitado após o "=",  depois tudo digitado é escrito na página usando o comando "document.write". A url com o ataque é parecida com esta:
 
 https://example.com/teste.html#context=%3Cscript%3Ealert(1)%3C/script%3E
 
@@ -186,3 +186,7 @@ Em caso de sites single page fique atento a como é utilizada a hash, ela pode t
 |index()|
 |jQuery.parseHTML()|
 |$.parseHTML()|
+
+Há alguns casos em existem parâmetros que identificam o tipo de codificação da página, como utf-8, fique atento a eles pois podem te ajudar a "bypassar" o filtro ao substituí-lo.
+
+Quem deseja se aprofundar nesta vulnerabilidade recomendo dar uma lida [neste artigo](https://owasp.org/www-community/xss-filter-evasion-cheatsheet), em inglês, da OWASP-Open Web Application Security Project.
