@@ -189,4 +189,4 @@ Em caso de sites single page fique atento a como é utilizada a hash, ela pode t
 
 Há alguns casos em existem parâmetros que identificam o tipo de codificação da página, como utf-8, fique atento a eles pois podem te ajudar a "bypassar" o filtro ao substituí-lo.
 
-Quem deseja se aprofundar nesta vulnerabilidade recomendo dar uma lida [neste artigo](https://owasp.org/www-community/xss-filter-evasion-cheatsheet), em inglês, da OWASP-Open Web Application Security Project.
+Quem deseja se aprofundar nesta vulnerabilidade recomendo dar uma lida [neste artigo](https://owasp.org/www-community/xss-filter-evasion-cheatsheet), em inglês, da OWASP,Open Web Application Security Project.
