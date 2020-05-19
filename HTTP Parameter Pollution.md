@@ -5,7 +5,7 @@ O HTTP Parameter Pollution, ou HPP, ocorre quando um atacante manipula os parâm
 
 Esta falha já existe a bastante tempo, entretanto nos últimos anos, devido ao aumento da complexidade dos sites, houve também um aumento no número de parâmetros o que trouxe esta vulnerabilidade de volta à tona.
 
-### Funcionamente técnico:
+### Funcionamento técnico:
 
 No artigo sobre Client e Server side expliquei como o servidor faz para pegar os parâmetros enviados à ele, mas o que acontece se, por exemplo, duplicarmos um parâmetro? Como a aplicação reagirá? Cada aplicação reage de uma forma diferente a esse problema, se usarmos php + apache será usado o último parâmetro, se for usado ASP.NET + IIS será usado uma concatenação de todos os parâmetros repetidos. Segue imagem da tabela de tratamento das linguagens e servidores:
 
