@@ -20,18 +20,18 @@ Caso o atacante esteja usando uma proxy para modificar as requests é necessári
 
 Caracter | Codificação 	|	Caracter | Codificação|
 -------- | -------------|   -------- | -----------|
-espaço   |     %20		|	```#```  |     %23    |
-$        |     %24      |	   %     |	   %25	  |
-&        |     %26      |      @     |	   %40	  |
-`        |     %60		|	   /     |     %2F    |
-:        |     %3A      |      ;     |     %3B	  |
-<        |     %3C      |	   =     |     %3D	  |
-```>```  |     %3E      |      ?     |     %3F    |
-[        |     %5B      |      \     |     %5C	  |
-]        |     %5D      |      ^     |     %5E	  |
-{        |     %7B      |   ```|```  |     %7C	  |
-}        |     %7D      |      ~     |     %7E	  |
-+        |     %2B		|	   ,     |     %2C	  |
+espaço   |     ```%20```			|	```#```  |     ```%23```    |
+```$```        |     ```%24```      |	   ```%```     |	   ```%25```	  |
+```&```        |     ```%26```      |      ```@```     |	   ```%40```	  |
+`       |     ```%60```		|	   ```/```     |     ```%2F```    |
+```:```        |     ```%3A```      |      ```;```     |     ```%3B```	  |
+```<```        |     ```%3C```      |	   ```=```     |     ```%3D```	  |
+```>```  |     ```%3E```      |      ```?```     |     ```%3F```    |
+```[```        |     ```%5B```      |      ```\```     |     ```%5C```	  |
+```]```     |     ```%5D```      |      ```^```     |     ```%5E```	  |
+```{```        |     ```%7B```      |   ```|```  |     ```%7C```	  |
+```}```        |     ```%7D```      |      ```~```     |     ```%7E```	  |
+```+```        |     ```%2B```		|	   ```,```     |     ```%2C```	  |
 
 	
 Esta vulnerabilidade fica mais interessante quando ela é atrelada a outras,por exemplo, o atacante pode manipular os parâmetros para "bypassar" filtros e injetar códigos SQL, que é uma linguagem de programação usada para lidar com banco de dados, então imagine o atacante retornar toda a base de usuarios e senhas de uma rede social, esta vulnerabilidade tem um nome específico: SQL injection, ela será explicada mais para frente.
