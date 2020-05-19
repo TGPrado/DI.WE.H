@@ -9,5 +9,5 @@
 * [Cross-Site Request Forgery](Cross-Site%20Request%20Forgery.md)
 * [HTTP Parameter Pollution](HTTP%20Parameter%20Pollution.md)
 * [HTML Injection](HTML%20Injection.md)
-* Cross-Site Scripting **-Este artigo vai demorar um pouco para sair, pois mesmo sendo uma vulnerabilidade "facil", quero explicar o máximo possível sobre ela-**
+* [Cross-Site Scripting](Cross-Site%20Scripting.md)
 * [Carriage Return Line Feed](Carriage%20Return%20Line%20Feed.md)
