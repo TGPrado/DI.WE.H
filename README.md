@@ -11,3 +11,4 @@
 * [HTML Injection](HTML%20Injection.md)
 * [Cross-Site Scripting](Cross-Site%20Scripting.md)
 * [Carriage Return Line Feed](Carriage%20Return%20Line%20Feed.md)
+* [Template Injection](Template%20Injection.md)
