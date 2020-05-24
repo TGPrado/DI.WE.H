@@ -109,8 +109,11 @@ O hacker recebeu um bounty de $3705 pela falha.
 
 ### Como explorar:
 
-Para explorar tente substituir o valor dos parâmetros por valores maliciosos, as vezes uma simples ```'``` pode te dar a indicação da falha; use e abuse dos caracteres de comentários, eles devem ser usados para tentar gerar uma consulta correta excluindo o restante da query, também é interessante freezar que o pesquisador pode simplesmente fechar o que foi passado, finalizar a consulta com um ponto e vírgula e criar outra exemplo: ```";select * from teste;--```.
+Para explorar tente substituir o valor dos parâmetros por valores maliciosos, as vezes uma simples ```'``` pode te dar a indicação da falha; use e abuse dos caracteres de comentários, eles devem ser usados para tentar gerar uma consulta correta excluindo o restante da query, também é interessante freezar que o pesquisador pode simplesmente fechar o que foi passado, finalizar a consulta com um ponto e vírgula e criar outra query exemplo: ```";select * from teste;--```.
 
 Fique atento a possíveis falhas do tipo Blind, não desista caso não consiga retornar valores, elas também são bastante perigosas; a função SLEEP,é sua amiga neste caso.
+
+Não foi dado exemplos mas esta falha pode ser encontrada em formulários enviados via post, fique atento a eles também, como páginas de login, mudança de senha ou alteração de email.
+
 
 Por último mas não menos importante, use também outras palavras reservadas do sql, como UNION, para juntar mais de uma query.
