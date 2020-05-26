@@ -7,12 +7,14 @@ Esta vulnerabilidade ocorre quando, advinhem, o desenvolvedor não sanitiza os d
 
 Structured Query Language, ou Linguagem de Consulta Estruturada é uma linguagem usada para ser fazer consultas em bancos de dados relacionais. 
 
-Estes são formados por tabelas, as quais possuem linhas e colunas, as colunas representam um tipo de dado e as linhas os dados como no exemplo abaixo.
+Podem ser usados na criação de um banco de dados diversos "sistemas de gerenciamento de banco de dados" ou SGBD entre eles os mais comuns são Oracle, MySQL, SQL Server, PostgreSQL, MongoDB e SQLite, cada um tem suas particularidades na criação da string usada para consulta.
+
+Eles são formados por tabelas, as quais possuem linhas e colunas, as colunas representam um tipo de dado e as linhas os dados como no exemplo abaixo.
 
 ![](https://lh3.ggpht.com/franciscogpneto/SMVjY4tWShI/AAAAAAAAGpw/Uqm0mEtEt3o/image_thumb%5B3%5D.png)
 ###### source: https://lh3.ggpht.com/franciscogpneto/SMVjY4tWShI/AAAAAAAAGpw/Uqm0mEtEt3o/image_thumb%5B3%5D.png
 
-Agora darei alguns exemplos de comandos sql para o banco de dados acima.
+Agora darei alguns exemplos de comandos usados no SGBD mysql, usarei o database acima.
 
 Caso queira retornar todos os dados da primeira tabela podemos usar o comando
 ```sql
@@ -72,7 +74,7 @@ O atacante também poderia injetar ```" or '1'='1';--``` isto fecharia a query e
 
 #### Blind SQL Injection:
 
-Este tipo é muito complexo e difícil de identificar pois o atacante não tem acesso aos erros e nem aos dados.Logo ele deve então, tentar enviar querys em que ele consiga identificar o SQL Injection mesmo sem os dados.
+Este tipo é muito complexo e difícil de identificar pois o atacante não tem acesso aos erros e nem aos dados.Logo ele deve então, tentar enviar queries em que ele consiga identificar o SQL Injection mesmo sem os dados.
 
 Vamos supor que haja um código igual ao do exemplo acima, mas que, desta vez os dados não sejam retornados ao usuário.
 

@@ -104,7 +104,7 @@ As seguintes linhas mostram headers comuns das responses, sendo eles:
 
 ### HTTP vs. HTTPS:
 
-A diferença entre o Hypertext Transfer Protocol e o Hyper Text Transfer Protocol Secure, como o pŕoprio nome nos induz é na questão da segurança, o segundo é uma junção do HTTP e do protocolo SSL/TLS,o último permite que dados sejam transmitidos por meio de uma conexão criptografada e que o servidor e o cliente sejam autenticos. O HTTPS se fez necessário pois, principalmente as conexões Wi-fi estão sucetíveis a ataques Man-in-the-Middle na qual um atacante engana o servidor e o cliente para enviarem as request e responses para ele vide a imagem:
+A diferença entre o Hypertext Transfer Protocol e o Hyper Text Transfer Protocol Secure, como o próprio nome nos induz é na questão da segurança, o segundo é uma junção do HTTP e do protocolo SSL/TLS,o último permite que dados sejam transmitidos por meio de uma conexão criptografada e que o servidor e o cliente sejam autênticos. O HTTPS se fez necessário pois, principalmente as conexões Wi-fi estão sucetíveis a ataques Man-in-the-Middle na qual um atacante engana o servidor e o cliente para enviarem as request e responses para ele vide a imagem:
 
 ![](https://std1.bebee.com/br/pb/83771/db1a1182/900)
 ###### Fonte: https://std1.bebee.com/br/pb/83771/db1a1182/900
