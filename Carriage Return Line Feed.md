@@ -2,7 +2,7 @@
 
 ### O que é:
 
-A partir desta vulnerabilidade será muito importante o leitor entender bem o funcionamento da web, então caso ainda esteja com dúvidas, releia os artigos sobre o [Protocolo HTPP](Protocolo%20HTTP-HTTPS.md), e o [Cliente-Servidor na web](Cliente-Servidor%20na%20WEB.md), feito isto, vamos à  vulnerabilidade.
+A partir desta vulnerabilidade será muito importante o leitor entender bem o funcionamento da web, então caso ainda esteja com dúvidas, releia os artigos sobre o [Protocolo HTTP](Protocolo%20HTTP-HTTPS.md), e o [Cliente-Servidor na web](Cliente-Servidor%20na%20WEB.md), feito isto, vamos à  vulnerabilidade.
 
 O CRLF são caracteres usados para pular linhas, eles correspondem respectivamente, ao fim de uma linha e o início de outra para muitos protocolos, incluindo o HTTP, nele estes caracteres são representados por %0D %0A eles são, respectivamente, \r \n.
 
