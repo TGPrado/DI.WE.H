@@ -6,7 +6,7 @@ Esta falha ocorre quando o atacante consegue manipular o conteúdo de um arquivo
 
 ### XML:
 
-Primeiro irei exclarecer o que é o eXtensible Markup Language, ele é uma linguagem de marcação usada para descrever e compartilhar diversos tipos de dados, para isso são usados tags como no HTML entretanto no XML elas não são predefinidas e todas dever ser fechadas.
+Primeiro irei esclarecer o que é o eXtensible Markup Language, ele é uma linguagem de marcação usada para descrever e compartilhar diversos tipos de dados, para isso são usados tags como no HTML entretanto no XML elas não são predefinidas e todas dever ser fechadas.
 
 O XML esta caindo em desuso para transporte de dados na internet devido a sua alta escalabilidade de tamanho, agora o modelo usado é o JSON.
 
@@ -125,7 +125,7 @@ ao enviar este payload o pesquisador percebeu requests chegando em seu servidor 
 
 A princípio o facebook não conseguiu reproduzir a falha, por isto MOhamed quase não recebeu o bounty, mas após algumas trocas de emails o facebook encontrou e corrigiu a falha.
 
-O pesquisador recebeu $6300 por esta falha, o valor foi menor que o de 2013 pois lá era possível escalar a falha para um Remote Code Execution.
+O pesquisador recebeu $6300 por esta falha, o valor foi menor que o de 2013 pois lá era possível escalar a falha para um Remote Code Execution irei explicar RCE com XXE no próximo artigo.
 
 ### Como explorar:
 
