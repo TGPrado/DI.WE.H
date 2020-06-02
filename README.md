@@ -15,7 +15,4 @@
 * [SQL Injection](SQL%20Injection.md)
 * [Server Side Request Forgery](Server%20Side%20Request%20Forgery.md)
 * [XML External Entity](XML%20External%20Entity.md)
-<<<<<<< HEAD
 * [Remote Code Execution](Remote%20Code%20Execution.md)
-=======
->>>>>>> 22613ac9030c9a81d5499c7e9af4d72104c253fc
