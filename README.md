@@ -10,7 +10,7 @@
 * [HTTP Parameter Pollution](HTTP%20Parameter%20Pollution.md)
 * [HTML Injection](HTML%20Injection.md)
 * [Cross-Site Scripting](Cross-Site%20Scripting.md)
-* [Carriage Return Line Feed](Carriage%20Return%20Line%20Feed.md)
+* [Carriage Return Line Feed/HTTP Response Splitting](Carriage%20Return%20Line%20Feed.md)
 * [Insecure Direct Object Reference](Insecure%20Direct%20Object%20Reference.md)
 * [SQL Injection](SQL%20Injection.md)
 * [XML External Entity](XML%20External%20Entity.md)

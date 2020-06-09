@@ -64,9 +64,39 @@ o exemplo acima é de um DTD interno mas eles também podem ser adquiridos exter
 </endereço>
 ```
 
+Para explorar esta falha também devemos entender o conceito de ```ENTITY``` que são basicamente variáveis que podem ser chamadas no arquivo xml, elas também podem se referir a valores internos e externos, sua sintaxe é muito simples simples:
+```xml
+<!ENTITY entity-name "entity-value">
+```
+Um exemplo dela é:
+
+```xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE foo [<!ENTITY nome "Thiago">] ><!--Aqui criamos uma variável chamada nome e guardamos dentro dela a string Thiago-->
+<endereço>
+  <nome>&nome;</nome><!--Aqui chamamos a variável nome-->
+  <telefone>(011) 123-4567</telefone>
+</endereço>
+```
+
+O código acima se referia a entity's internas, as externas são declaradas assim:
+
+```xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE foo [<!ENTITY nome SYSTEM "htpps://exemplo.com">] >
+<endereço>
+  <nome>&nome;</nome>
+  <telefone>(011) 123-4567</telefone>
+</endereço>
+```
+
+Sua sintaxe é idêntica à DTD externos.
+
 ### Funcionamento técnico:
 
-Como você já deve ter imaginado o 'problema' desta falha está quando podemos setar DTD externos, ao enviar um xml como este para uma página:
+Como você já deve ter imaginado o 'problema' desta falha está quando podemos setar DTD's e atrelar uma entity externa a ele, ao enviar um xml como este para uma página:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <stockCheck><productId>381</productId></stockCheck>
@@ -123,7 +153,7 @@ como podem perceber o valor ```%dtd``` faz referência a um arquivo dtd externo,
 ```
 ao enviar este payload o pesquisador percebeu requests chegando em seu servidor python, logo o facebook estava vulnerável a xxe novamente.
 
-A princípio o facebook não conseguiu reproduzir a falha, por isto MOhamed quase não recebeu o bounty, mas após algumas trocas de emails o facebook encontrou e corrigiu a falha.
+A princípio o facebook não conseguiu reproduzir a falha, por isto Mohamed quase não recebeu o bounty, mas após algumas trocas de emails a rede social encontrou e corrigiu a falha.
 
 O pesquisador recebeu $6300 por esta falha, o valor foi menor que o de 2013 pois lá era possível escalar a falha para um Remote Code Execution irei explicar RCE com XXE no próximo artigo.
 
