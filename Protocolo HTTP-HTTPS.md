@@ -6,7 +6,7 @@ Para que possamos hackear alguma coisa devemos primeiro entender seu funcionamen
 
 Dito isto veremos o como funciona o protocolo HTTP (*Hypertext Transfer Protocol*), que é a base da *World Wide Web*.
 
-### Conceito:
+### O que é:
 O HTTP é um protocolo da camada de aplicação do modelo TCP/IP que foi criado para possibilitar a transmissão de dados na internet.
 
 ### Funcionamento:
@@ -22,7 +22,7 @@ Este protocolo funciona em cima de um modelo chamado cliente-servidor, onde o cl
 ### Funcionamento Técnico:
 Entendido o sistema cliente-servidor, veremos agora exemplos de requisições (*requests*) e repostas (*responses*) aplicadas ao protocolo HTTP:
  
-  Este é um exemplo de uma requisição:
+  Este é um exemplo de uma request:
   ```http
   GET / HTTP/1.1
   Host: www.google.com
@@ -34,7 +34,7 @@ Entendido o sistema cliente-servidor, veremos agora exemplos de requisições (*
   ```
   A princípio isto pode parecer confuso, mas vamos simplificar.
 
-  Tudo o que está escrito acima representa o cabeçalho (*header*) da requisição. Ele é usado para enviar todas as informações necessárias para que a conexão funcione adequadamente. Além do cabeçalho, podem ser anexados também um corpo (*body*), no qual são colocados os dados que o usuário deseja enviar para o servidor. Observe que o cabeçalho e o corpo da requisição são separados por uma quebra de linha.
+  Tudo o que está escrito acima representa o cabeçalho (*header*) da request. Ele é usado para enviar todas as informações necessárias para que a conexão funcione adequadamente. Além do cabeçalho, podem ser anexados também um corpo (*body*), no qual são colocados os dados que o usuário deseja enviar para o servidor. Observe que o cabeçalho e o corpo da request são separados por uma quebra de linha.
   ```http
   POST / HTTP/1.1 
   Host: localhost:8000
@@ -49,32 +49,32 @@ Entendido o sistema cliente-servidor, veremos agora exemplos de requisições (*
   body
   ```
 
-#### A primeira linha de toda requisição é usada para definir três coisas:
-1. O método da requisição, que pode ser:
+#### A primeira linha de toda request é usada para definir três coisas:
+1. O método da request, que pode ser:
 
 > <h5>GET - O cliente requisita algum recurso, como uma página ou uma imagem.</h5>
 > <h5>HEAD - Muito parecido com o GET, porém aqui o cliente requisita somente o cabeçalho (*header*) da página.</h5>
-> <h5>POST - O cliente está enviando dados que estão contidos no corpo da requisição.</h5>
-> <h5>PUT - Parecido com o POST, diferindo apenas em como o servidor irá lidar com os dados enviados. Por exemplo: Caso seja necessário atualizar os dados de um usúario, usa-se o método PUT, pois com ele o servidor irá sobrescrever os dados antigos com os novos, gerando somente um registro, com o POST o servidor cria vários registros, um para cada requisição feita.</h5>
+> <h5>POST - O cliente está enviando dados que estão contidos no corpo da request.</h5>
+> <h5>PUT - Parecido com o POST, diferindo apenas em como o servidor irá lidar com os dados enviados. Por exemplo: Caso seja necessário atualizar os dados de um usúario, usa-se o método PUT, pois com ele o servidor irá sobrescrever os dados antigos com os novos, gerando somente um registro, com o POST o servidor cria vários registros, um para cada request feita.</h5>
 > <h5>DELETE - O cliente requisita que algum recurso seja excluído do servidor.</h5>
 
-2. A rota da aplicação para a qual a requisição está sendo feita.
+2. A rota da aplicação para a qual a request está sendo feita.
 
 3. A versão do protocolo HTTP.
 
-#### O restante do header contém diversos items, sendo eles sempre definidos por `CHAVE: VALOR`. Os mais comuns são:
+#### O restante do header contém diversos itens, sendo eles sempre definidos por `CHAVE: VALOR`. Os mais comuns são:
  
 > <h5>Host - Nome de domínio do servidor. Ex: www.google.com; www.youtube.com</h5>
-> <h5>User-Agent - Usado pelo servidor para identificar quem está fazendo a requisição. Ela contém dados como navegador e sistema operacional do cliente.</h5>
+> <h5>User-Agent - Usado pelo servidor para identificar quem está fazendo a request. Ela contém dados como navegador e sistema operacional do cliente.</h5>
 > <h5>Accept - Exprime quais tipos de dados o cliente é capaz de entender. Ex: text/plain; application/json</h5>
 > <h5>Content-Type - Indica qual o tipo dos dados que o servidor ou o cliente está enviando. Ex: text/plain; application/json</h5>
 > <h5>Accept-Language - Indica qual linguagem o cliente entende. Usado para definir se uma página estará em português ou inglês, por exemplo.</h5>
 > <h5>Connection - Define se a conexão com o servidor deve ser mantida para futuras requisições, no primeiro caso seu valor é keep-alive, no segundo close.</h5>
 > <h5>Cookie - Funciona como um identificador e mantenedor de sessão. Por definição o HTTP é um protocolo stateless, o que significa que ele não mantém estado, ou seja, se você fizer login na sua rede social e tentar fazer outra ação, como mandar uma mensagem, você teria que se autenticar novamente, pois nao há nada que defina você como logado, por isto foram definidos os cookies, com eles o usuário não precisa se autenticar toda vez. Entretanto, eles precisam ser enviados em todas as requisições subsequentes.</h5>
-> <h5>Referer - Contém o endereço de onde a requisição foi originada. Isto é usado pelo servidor para saber de onde os visitantes de seu site se originam.</h5>
+> <h5>Referer - Contém o endereço de onde a request foi originada. Isto é usado pelo servidor para saber de onde os visitantes de seu site se originam.</h5>
 > <h5>Origin - Este header é muito parecido com o Referer, pois ambos indicam de onde a solicitação foi originada, no entando este indica só o nome do site, não o caminho todo. Exemplo: Referer: exemplo.com/artigos/protocolo%20HTTP%20HTTPS Origin: exemplo.com</h5>
 
-#### Uma vez feita a requisição, agora analisaremos a resposta do servidor.
+#### Uma vez feita a request, agora analisaremos a resposta do servidor.
 
 ```http
 HTTP/1.1 200 OK
@@ -89,7 +89,7 @@ Set-Cookie:
 Connection: close
 Content-Length: 194814
 ```
-Essa é a resposta para a primeira requisição que fizemos, além deste conteúdo há também um corpo, porém não o anexarei por ser muito grande.
+Essa é a resposta para a primeira request que fizemos, além deste conteúdo há também um corpo, porém não o anexarei por ser muito grande.
 
 Vamos analisar os cabeçalhos dessa resposta, na primeira linha há duas coisas: A versão do protocolo HTTP usado e o status da resposta, que podem ser:
 
