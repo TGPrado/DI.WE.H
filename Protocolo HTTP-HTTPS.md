@@ -1,70 +1,80 @@
-# Protocolo HTTP
-## Começando do começo...
-Para que possamos hackear alguma coisa devemos primeiro, entender como ela funciona.
 
-Dito isto explicarei o funcionamento do protocolo HTTP-Hypertext Transfer Protocol, o qual é a base da World Wide Web.
-### O que é:
-O HTTP é um protocolo da camada de aplicação do modelo TCP/IP, ele foi inventado para que houvesse uma transmissão de dados na World Wide Web.
+# Protocolo HTTP e HTTPS
+
+### Começando do começo...
+Para que possamos hackear alguma coisa devemos primeiro entender seu funcionamento.
+
+Dito isto veremos o como funciona o protocolo HTTP (*Hypertext Transfer Protocol*), que é a base da *World Wide Web*.
+
+### Conceito:
+O HTTP é um protocolo da camada de aplicação do modelo TCP/IP que foi criado para possibilitar a transmissão de dados na internet.
+
 ### Funcionamento:
-Este protocolo funciona em cima de um modelo chamado Cliente-Servidor, nele o cliente faz requisições de serviços ou recursos para um servidor. Uma analogia deste modelo no mundo real seriam as pizzarias[servidor] as quais, aguardam as requisições de pizzas, para assim, poderem produzi-las e enviá-las para o cliente.
-![](https://upload.wikimedia.org/wikipedia/commons/1/1c/Cliente-Servidor.png)
-###### Fonte:https://upload.wikimedia.org/wikipedia/commons/1/1c/Cliente-Servidor.png
+Este protocolo funciona em cima de um modelo chamado cliente-servidor, onde o cliente faz requisições a um servidor, que como resposta lhe envia informações. Uma analogia para este modelo pode ser feita com a relação entre as pizzarias (servidores) e seus respectivos clientes, onde estes solicitam suas pizzas e as aguardam como resposta.
 
-O HTTP funciona de forma parecida, ao cliente[usuário] acessar um site, o mesmo cria uma conexão e envia para o servidor uma mensagem de *requisição HTTP* solicitando a página web, e o servidor o responde com a mesma, então o navegador interpreta e renderida a página HTML.
-### Funcionamento técnico:
- Entendido o sistema Cliente-Servidor, mostrarei exemplos de requisições[requests] e repostas[responses] aplicadas no protocolo HTTP.
+<p align="center">
+ <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Cliente-Servidor.png">
+</p>
+<h6 align="center">Fonte: https://upload.wikimedia.org/wikipedia/commons/1/1c/Cliente-Servidor.png</h6>
+
+ Sendo assim, quando um cliente acessa um site, ele está simplesmente solicitando ao servidor uma página web, que lhe é retornada (uma vez que exista) e renderizada pelo seu navegador.
+
+### Funcionamento Técnico:
+Entendido o sistema cliente-servidor, veremos agora exemplos de requisições (*requests*) e repostas (*responses*) aplicadas ao protocolo HTTP:
  
- Este é um exemplo de request:
-```http
-GET / HTTP/1.1
-Host: www.google.com
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:76.0) Gecko/20100101 Firefox/76.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
-Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3
-Connection: close
-Cookie: 
-```
-A princípio isto pode parecer confuso, mas vamos simplificar. 
+  Este é um exemplo de uma requisição:
+  ```http
+  GET / HTTP/1.1
+  Host: www.google.com
+  User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:76.0) Gecko/20100101 Firefox/76.0
+  Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+  Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3
+  Connection: close
+  Cookie: 
+  ```
+  A princípio isto pode parecer confuso, mas vamos simplificar.
 
-Tudo o que está escrito acima representa o cabeçalho/header da request ele é usado para enviar todas as informações necessárias para que a conexão ocorra corretamente, além do header podem ser anexados também um corpo/body, nele são colocados os dados que o usuário deseja enviar para o servidor, esses dados são separados por uma linha em branco do header,exemplo:
-```http
-POST / HTTP/1.1 
-Host: localhost:8000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:76.0) Gecko/20100101 Firefox/76.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
-Content-Type: text/plain
-Content-Lenght: 325
-Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3
-Connection: keep-alive
-Cookie: 
+  Tudo o que está escrito acima representa o cabeçalho (*header*) da requisição. Ele é usado para enviar todas as informações necessárias para que a conexão funcione adequadamente. Além do cabeçalho, podem ser anexados também um corpo (*body*), no qual são colocados os dados que o usuário deseja enviar para o servidor. Observe que o cabeçalho e o corpo da requisição são separados por uma quebra de linha.
+  ```http
+  POST / HTTP/1.1 
+  Host: localhost:8000
+  User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:76.0) Gecko/20100101 Firefox/76.0
+  Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+  Content-Type: text/plain
+  Content-Lenght: 325
+  Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3
+  Connection: keep-alive
+  Cookie: 
 
-body
-```
-A primeira linha de toda request define três coisas, o método da requisição, os quais podem ser:
+  body
+  ```
 
-###### GET - O cliente requisita algum dado, como uma página ou uma imagem, ele só deve ser usado para recuperar algum dado.
-###### HEAD - Muito parecido com o GET, mas neste caso o cliente requisita somente o header da página.
-###### POST - Neste caso, o usuário envia um dado para o servidor, o dado é colocado no corpo da request.
-###### PUT - Parecido com o POST, diferindo apenas em como o servidor irá lidar com esse dado, por exemplo:
-###### Caso seja necessário atualizar os dados de um usúario, usa-se o método PUT, pois com ele o servidor irá sobrescrever os dados antigos com os novos, gerando somente um registro, com o POST o servidor cria vários registros, um para cada request feita.
-###### DELETE - Remoção de algo no servidor.
-A segunda coisa definida pela primeira linha, é o caminho dentro do Host para onde os dados devem ir, ou ser solicidatos, a última é a versão do protocolo HTTP.
+#### A primeira linha de toda requisição é usada para definir três coisas:
+1. O método da requisição, que pode ser:
 
-O restante do header conter diversos items, sendo eles sempre definidos por NOME: VALOR
+> <h5>GET - O cliente requisita algum recurso, como uma página ou uma imagem.</h5>
+> <h5>HEAD - Muito parecido com o GET, porém aqui o cliente requisita somente o cabeçalho (*header*) da página.</h5>
+> <h5>POST - O cliente está enviando dados que estão contidos no corpo da requisição.</h5>
+> <h5>PUT - Parecido com o POST, diferindo apenas em como o servidor irá lidar com os dados enviados. Por exemplo: Caso seja necessário atualizar os dados de um usúario, usa-se o método PUT, pois com ele o servidor irá sobrescrever os dados antigos com os novos, gerando somente um registro, com o POST o servidor cria vários registros, um para cada requisição feita.</h5>
+> <h5>DELETE - O cliente requisita que algum recurso seja excluído do servidor.</h5>
 
-Os mais comuns são:
+2. A rota da aplicação para a qual a requisição está sendo feita.
+
+3. A versão do protocolo HTTP.
+
+#### O restante do header contém diversos items, sendo eles sempre definidos por `CHAVE: VALOR`. Os mais comuns são:
  
-###### Host - Nome de domínio do servidor. Ex: www.google.com; www.youtube.com
-###### User-Agent - Usada para identificar, para o servidor, quem faz a request, ela contém dados como, Navegador e Sistema Operacional.
-###### Accept - Exprime quais tipos de dados o cliente é capaz de entender. Ex: text/plain; application/json
-###### Content-Type - Indica qual o tipo de dado que o servidor ou o cliente esta enviando. Ex: text/plain; application/json
-###### Accept-Language - Indica qual linguagem o cliente entende, geralmente usado para definir se uma página estará em português ou inglês, por exemplo.
-###### Connection - Define se a conexão com o servidor deve ser mantida para futuras requests ou não, no primeiro caso seu valor é keep-alive, no segundo close.
-###### Cookie - Funcionam como um identificador e mantenedor de sessão; Por definição o HTTP é um protocolo stateless, isso significa que ele não mantém estado, ou seja se você fizer login na sua rede social e tentar fazer outra ação como, mandar uma mensagem, você teria que se autenticar de novo, pois nao há nada que defina você como logado, por isto foram definidos os cookies, com eles o usuário não precisa se autenticar toda a vez. Entretanto, eles precisam ser enviados em todas as requests subsequentes.
-###### Referer - Contém o endereço de onde a requisição foi originada. Isto é usado pelo servidor para saber de onde os visitantes de seu site se originam.
-###### Origin - Este header é muito parecido com o Referer, pois ambos indicam e onde a solicitação foi originada, no entando este indica só o nome do site, não o caminho todo. Exemplo: Referer: exemplo.com/artigos/protocolo%20HTTP%20HTTPS Origin: exemplo.com
+> <h5>Host - Nome de domínio do servidor. Ex: www.google.com; www.youtube.com</h5>
+> <h5>User-Agent - Usado pelo servidor para identificar quem está fazendo a requisição. Ela contém dados como navegador e sistema operacional do cliente.</h5>
+> <h5>Accept - Exprime quais tipos de dados o cliente é capaz de entender. Ex: text/plain; application/json</h5>
+> <h5>Content-Type - Indica qual o tipo dos dados que o servidor ou o cliente está enviando. Ex: text/plain; application/json</h5>
+> <h5>Accept-Language - Indica qual linguagem o cliente entende. Usado para definir se uma página estará em português ou inglês, por exemplo.</h5>
+> <h5>Connection - Define se a conexão com o servidor deve ser mantida para futuras requisições, no primeiro caso seu valor é keep-alive, no segundo close.</h5>
+> <h5>Cookie - Funciona como um identificador e mantenedor de sessão. Por definição o HTTP é um protocolo stateless, o que significa que ele não mantém estado, ou seja, se você fizer login na sua rede social e tentar fazer outra ação, como mandar uma mensagem, você teria que se autenticar novamente, pois nao há nada que defina você como logado, por isto foram definidos os cookies, com eles o usuário não precisa se autenticar toda vez. Entretanto, eles precisam ser enviados em todas as requisições subsequentes.</h5>
+> <h5>Referer - Contém o endereço de onde a requisição foi originada. Isto é usado pelo servidor para saber de onde os visitantes de seu site se originam.</h5>
+> <h5>Origin - Este header é muito parecido com o Referer, pois ambos indicam de onde a solicitação foi originada, no entando este indica só o nome do site, não o caminho todo. Exemplo: Referer: exemplo.com/artigos/protocolo%20HTTP%20HTTPS Origin: exemplo.com</h5>
 
-Enviada uma request, agora analisaremos a response do servidor.
+#### Uma vez feita a requisição, agora analisaremos a resposta do servidor.
 
 ```http
 HTTP/1.1 200 OK
@@ -79,32 +89,32 @@ Set-Cookie:
 Connection: close
 Content-Length: 194814
 ```
-Essa é a response para a primeira request deste artigo, além deste conteúdo, há também um body o qual não anexarei por ser muito grande.
+Essa é a resposta para a primeira requisição que fizemos, além deste conteúdo há também um corpo, porém não o anexarei por ser muito grande.
 
-Vamos analisar os header desta response,na primeira linha há duas coisas, a versão do protocolo HTTP usado e o status da response, eles podem ser as seguintes:
+Vamos analisar os cabeçalhos dessa resposta, na primeira linha há duas coisas: A versão do protocolo HTTP usado e o status da resposta, que podem ser:
 
-###### 1XX: Passa informações, se a solicitação foi aceita, ou se o processo continua em desenvolvimento.
-###### 2XX: A solicitação foi executada com sucesso.
-###### 3XX: Indica que há a necessidade de redirecionamento para que a solicitação possa ser concluída.
-###### 4XX: Mostra que houve um erro na solicitação por parte do cliente.
-###### 5XX: Indica que o servidor não pôde responder a solicitação.
+> <h5>1XX: Passa informações: Se a solicitação foi aceita, ou se o processo continua em desenvolvimento.</h5>
+> <h5>2XX: A solicitação foi executada com sucesso.</h5>
+> <h5>3XX: Indica que há a necessidade de redirecionamento para que a solicitação possa ser concluída.</h5>
+> <h5>4XX: Mostra que houve um erro na solicitação por parte do cliente.</h5>
+> <h5>5XX: Indica que o servidor não pôde responder a solicitação.</h5>
 
-As seguintes linhas mostram headers comuns das responses, sendo eles:
+As seguintes linhas mostram cabeçalhos comuns das respostas, são eles:
 
-###### Date: Data em que a response foi originada.
-###### Expires: Indica quando o conteúdo deve ser considerado desatualizado, neste caso o valor -1 significa que o conteúdo expira imediatamente após ser enviado.
-###### Cache-Control: Define políticas de cache.
-###### Etag: Identifica uma versão específica de algum recurso, ele permite que um servidor não envie a resposta completa, o que permite uma maior velocidade.
-###### Server: Define informações sobre o servidor.
-###### Set-Cookie: Usado para o servidor, enviar cookies para o cliente.
-###### X-Frame-Options: Indica se o navegador deve ou não renderizar uma página em ```<frame>```,```<iframe>```.
-
-
-
+> <h5>Date: Data em que a resposta foi originada.</h5>
+> <h5>Expires: Indica quando o conteúdo deve ser considerado desatualizado, neste caso o valor -1 significa que o conteúdo expira imediatamente após ser enviado.</h5>
+> <h5>Cache-Control: Define políticas de cache.</h5>
+> <h5>Etag: Identifica uma versão específica de algum recurso. Permite assim que o servidor não envie a resposta completa, proporcionando uma maior velocidade.</h5>
+> <h5>Server: Define informações acerca do servidor.</h5>
+> <h5>Set-Cookie: Usado para o servidor enviar cookies para o cliente.</h5>
+> <h5>X-Frame-Options: Indica se o navegador deve ou não renderizar uma página em ```<frame>```,```<iframe>```.</h5>
 
 ### HTTP vs. HTTPS:
 
-A diferença entre o Hypertext Transfer Protocol e o Hyper Text Transfer Protocol Secure, como o próprio nome nos induz é na questão da segurança, o segundo é uma junção do HTTP e do protocolo SSL/TLS,o último permite que dados sejam transmitidos por meio de uma conexão criptografada e que o servidor e o cliente sejam autênticos. O HTTPS se fez necessário pois, principalmente as conexões Wi-fi estão sucetíveis a ataques Man-in-the-Middle na qual um atacante engana o servidor e o cliente para enviarem as request e responses para ele vide a imagem:
+A diferença entre o *Hypertext Transfer Protocol* e o *Hyper Text Transfer Protocol Secure*, como o próprio nome nos induz, está na questão da segurança.
+O segundo é uma junção do protocolo HTTP e do protocolo SSL/TLS. O SSL/TLS permite que dados sejam transmitidos por meio de uma conexão criptografada e que o servidor e o cliente sejam autênticos. O HTTPS se faz necessário principalmente porque as conexões Wi-fi estão suscetíveis a ataques *Man-in-the-Middle*, no qual um atacante engana o servidor e o cliente para que as requisições e respostas passem por ele, vide a imagem:
 
-![](https://std1.bebee.com/br/pb/83771/db1a1182/900)
-###### Fonte: https://std1.bebee.com/br/pb/83771/db1a1182/900
+<p align="center">
+ <img src="https://std1.bebee.com/br/pb/83771/db1a1182/900">
+</p>
+<h6 align="center">Fonte: https://std1.bebee.com/br/pb/83771/db1a1182/900</h6>
