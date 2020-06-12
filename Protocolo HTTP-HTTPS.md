@@ -55,7 +55,7 @@ Entendido o sistema cliente-servidor, veremos agora exemplos de requisições (*
 > <h5>GET - O cliente requisita algum recurso, como uma página ou uma imagem.</h5>
 > <h5>HEAD - Muito parecido com o GET, porém aqui o cliente requisita somente o cabeçalho (*header*) da página.</h5>
 > <h5>POST - O cliente está enviando dados que estão contidos no corpo da request.</h5>
-> <h5>PUT - Parecido com o POST, diferindo apenas em como o servidor irá lidar com os dados enviados. Por exemplo: Caso seja necessário atualizar os dados de um usúario, usa-se o método PUT, pois com ele o servidor irá sobrescrever os dados antigos com os novos, gerando somente um registro, com o POST o servidor cria vários registros, um para cada request feita.</h5>
+> <h5>PUT - Parecido com o POST, diferindo apenas em como o servidor irá lidar com os dados enviados. Por exemplo: Caso seja necessário atualizar os dados de um usuário, usa-se o método PUT, pois com ele o servidor irá sobrescrever os dados antigos com os novos, gerando somente um registro, com o POST o servidor cria vários registros, um para cada request feita.</h5>
 > <h5>DELETE - O cliente requisita que algum recurso seja excluído do servidor.</h5>
 
 2. A rota da aplicação para a qual a request está sendo feita.
@@ -70,9 +70,9 @@ Entendido o sistema cliente-servidor, veremos agora exemplos de requisições (*
 > <h5>Content-Type - Indica qual o tipo dos dados que o servidor ou o cliente está enviando. Ex: text/plain; application/json</h5>
 > <h5>Accept-Language - Indica qual linguagem o cliente entende. Usado para definir se uma página estará em português ou inglês, por exemplo.</h5>
 > <h5>Connection - Define se a conexão com o servidor deve ser mantida para futuras requisições, no primeiro caso seu valor é keep-alive, no segundo close.</h5>
-> <h5>Cookie - Funciona como um identificador e mantenedor de sessão. Por definição o HTTP é um protocolo stateless, o que significa que ele não mantém estado, ou seja, se você fizer login na sua rede social e tentar fazer outra ação, como mandar uma mensagem, você teria que se autenticar novamente, pois nao há nada que defina você como logado, por isto foram definidos os cookies, com eles o usuário não precisa se autenticar toda vez. Entretanto, eles precisam ser enviados em todas as requisições subsequentes.</h5>
+> <h5>Cookie - Funciona como um identificador e mantenedor de sessão. Por definição o HTTP é um protocolo stateless, o que significa que ele não mantém estado, ou seja, se você fizer login na sua rede social e tentar fazer outra ação, como mandar uma mensagem, você teria que se autenticar novamente, pois não há nada que defina você como logado, por isto foram definidos os cookies, com eles o usuário não precisa se autenticar toda vez. Entretanto, eles precisam ser enviados em todas as requisições subsequentes.</h5>
 > <h5>Referer - Contém o endereço de onde a request foi originada. Isto é usado pelo servidor para saber de onde os visitantes de seu site se originam.</h5>
-> <h5>Origin - Este header é muito parecido com o Referer, pois ambos indicam de onde a solicitação foi originada, no entando este indica só o nome do site, não o caminho todo. Exemplo: Referer: exemplo.com/artigos/protocolo%20HTTP%20HTTPS Origin: exemplo.com</h5>
+> <h5>Origin - Este header é muito parecido com o Referer, pois ambos indicam de onde a solicitação foi originada, no entanto este indica só o nome do site, não o caminho todo. Exemplo: Referer: exemplo.com/artigos/protocolo%20HTTP%20HTTPS Origin: exemplo.com</h5>
 
 #### Uma vez feita a request, agora analisaremos a resposta do servidor.
 

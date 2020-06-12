@@ -2,14 +2,14 @@
 
 ### O que é:
 
-Como pode ser visto no nome esta falha é bem parecida com o CSRF, só que ela ocorre no lado do outro lado.
+Como pode ser visto pelo nome esta falha é bem parecida com o CSRF, só que ela ocorre no outro lado.
 
-Servidores geralmente necessitam de dados vindos de outros lugares, seja de banco de dados, api, ou até de aplicações externas, como o twitter para compartilhamento de links, mas este problema ocorre quando o mesmo permite que estes dados sejam solicitados sem nenhum controle.
+Servidores geralmente necessitam de dados vindos de outros lugares, seja de banco de dados, api, ou até de aplicações externas, como o twitter para compartilhamento de links, entretanto temos um problema quando o mesmo permite que estes dados sejam solicitados sem nenhum controle.
 
 
 ### Funcionamento técnico:
 
-Para abrager as coisas da melhor forma possível, dividirei esta falha em **Blind** e **Normal** SSRF.
+Para abranger as coisas da melhor forma possível, dividirei esta falha em **Blind** e **Normal** SSRF.
 
 #### Normal SSRF:
 

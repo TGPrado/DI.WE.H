@@ -39,7 +39,7 @@ O pesquisador recebeu $375 por esta falha, e ela pode ser lida [aqui](https://ha
 
 Explorar esta falha é fácil, fique atento a valores que sejam referentes ao ID de um usuário como UUID, user, account e etc, ao encontrá-los tente alterá-lo para ver como a aplicação reagirá.
 
-Como citado acima usar o sistema de UUID é muito seguro, pois é impossível "advinhar" um id, entretanto há duas maneiras de se explorar esta falha mesmo com eles:
+Como citado acima usar o sistema de UUID é muito seguro, pois é impossível "adivinhar" um id, entretanto há duas maneiras de se explorar esta falha mesmo com eles:
 
 A primeira é basicamente procurar na aplicação onde este valor possa estar "vazando" isto é comumente encontrado em sistemas de recuperação de senha, de "invite a friend" mas também pode ser encontrado no perfil da vítima.
 

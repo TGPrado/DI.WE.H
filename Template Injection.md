@@ -12,7 +12,7 @@ Como vocês devem ter percebido a maior partes das falhas se dão nas entradas d
 ###### Fonte: https://dkrn4sk0rn31v.cloudfront.net/2019/12/12151141/template-engine.png
 Não há como falar sobre template injection sem entender o que é um template, e seu engine então vamos lá!
 
-Quando se faz a criação de sites um pouco mais complexos, há a necessidade de integrar dados há página HTML, sejam estes vindos de uma A.P.I ou do banco de dados, e organizar este conteúdo com regras de negócio como ifs e elses se torna muito complicado dificultando até a leitura do código; é neste contexo que entram os template engines ou view engines, eles são métodos que facilitam a criação destas páginas.
+Quando se faz a criação de sites um pouco mais complexos, há a necessidade de integrar dados há página HTML, sejam estes vindos de uma A.P.I ou do banco de dados, e organizar este conteúdo com regras de negócio como ifs e elses se torna muito complicado dificultando até a leitura do código; é neste contexto que entram os template engines ou view engines, eles são métodos que facilitam a criação destas páginas.
 
 Este é um exemplo de um código que verifica se o usuário esta logado e gera uma página com o nome dele:
 
@@ -71,7 +71,7 @@ Um atacante esperto tentaria de imediato injetar um código javascript no final 
 
 O atacante para verificar a se esta página é vulnerável a SSTI pode injetar um código simples como {{7+7}}, as chaves duplas indicam que o código deve ser analisado como python, caso o servidor retorne o resultado da soma entende-se que o mesmo está tratando os dados de maneira errada, logo ele está vulnerável.
 
-Agora precisamos identificar até onde esta vulnerabilidade se extende e o que pode ser feito, com python use funcões como o ```dir()```,```locals()``` ou ```help``` para medir isto, elas nos dão informações sobre atributos e o que eles podem chamar, use e abuse da documentação para entendê-las.
+Agora precisamos identificar até onde esta vulnerabilidade se estende e o que pode ser feito, com python use funcões como o ```dir()```,```locals()``` ou ```help``` para medir isto, elas nos dão informações sobre atributos e o que eles podem chamar, use e abuse da documentação para entendê-las.
 
 Neste caso o atacante inseriu ```{{config.items()}}``` esta função mostra todos as configurações do servidor desde a conexão com o banco de dados até as SECRET_KEYS.	
 
@@ -161,6 +161,6 @@ Para usar o máximo que esta vulnerabilidade pode oferecer, tente descobrir as t
 
 Isto fica evidente no exemplo deste artigo, pois nele o pesquisador não viu nenhuma mudança no subdomínio que usava node.js/express/backbone.js
 
-Uma injeção de ```{{7+7}}``` pode funcionar muito bem em um site criado com python, mas seria infeciente em um site usando ruby, por exemplo, pois o mesmo só funciona com injeções deste tipo: ```<%= 7 * 7 %>```, é interessante entender como a injeção esta sendo tratava, pois há casos em que o site pode retornar 14 para a soma anterior, e retonar 7777777 para uma multiplicação, isto ocorre pois o mesmo está tratando os dados como string.
+Uma injeção de ```{{7+7}}``` pode funcionar muito bem em um site criado com python, mas seria ineficiente em um site usando ruby, por exemplo, pois o mesmo só funciona com injeções deste tipo: ```<%= 7 * 7 %>```, é interessante entender como a injeção esta sendo tratava, pois há casos em que o site pode retornar 14 para a soma anterior, e retonar 7777777 para uma multiplicação, o último caso ocorre pois o dado é tratado de forma diferente.
 
 [Este repositório do github](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection#basic-injections) mostra todos os possíveis payloads para todas as tecnologias de back e de front-end.

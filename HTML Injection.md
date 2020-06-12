@@ -104,7 +104,7 @@ Caracter | Codificação
 ### Exemplo:
 
 Um pesquisador encontrou, em 2015, uma vulnerabilidade do tipo html injection na página login error da empresa Within Security, o mesmo percebeu que ao errar o login em sua conta, a página gerava um parâmetro error, deixando a url assim: https://withinsecurity.com/wp-login.php?error=access_denied
- ele tentou substituir este parâmetro por um valor arbritário e, para sua surpresa, o valor foi refletido na tela. O mesmo enviou a seguinte PoC(prova de conceito) para a companhia esta:
+ ele tentou substituir este parâmetro por um valor arbitrário e, para sua surpresa, o valor foi refletido na tela. O mesmo enviou a seguinte PoC(prova de conceito) para a companhia esta:
 
 ![](https://i.imgur.com/OsqNHV9.png)
 
@@ -113,7 +113,7 @@ Um pesquisador encontrou, em 2015, uma vulnerabilidade do tipo html injection na
 
 Para explorar esta vulnerabilidade o pesquisador deve estar atento ao parâmetros e como eles são adicionados à página, caso eles sejam adicionados no atributo de uma tag, tente fecha-la seja com aspas simples ou aspas duplas, para decidir qual usar analise o html da página usando o inspetor de elementos.
 
-Também é interessante notar como o filtro esta reagindo aos parâmetros com carateres especiais, alguns simplesmente os excluem para estes, tente adicionar um URL encode dentro de outro, por exemplo, sabendo que ```%3C``` corresponde a ```<``` tente então injetar ```%3%3CC```.
+Também é interessante notar como o filtro esta reagindo aos parâmetros com caracteres especiais, alguns simplesmente os excluem para estes, tente adicionar um URL encode dentro de outro, por exemplo, sabendo que ```%3C``` corresponde a ```<``` tente então injetar ```%3%3CC```.
 
 Acima, dei um exemplo de filtros server side, agora quando eles estiverem no client side tente usar um proxy para interceptar e modificar a request depois que ela já passou pelo filtro.
 	

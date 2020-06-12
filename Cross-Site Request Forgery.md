@@ -2,7 +2,7 @@
 
 ### O que é:
 
-Cross-Site Request Forgery-CSRF, ou falsificação de requisição entre sites, é um dos ataques mais antigos, ele existe praticamente desde a fundação da WEB. Ele ocorre quando, um site malicioso força o navegador do usuário a realizar requests arbritárias em um aplicativo WEB que ele esteja autenticado. Para que este ataque ocorra é esperado que a vítima esteja logada em sua conta e acesse o link malicioso.
+Cross-Site Request Forgery-CSRF, ou falsificação de requisição entre sites, é um dos ataques mais antigos, ele existe praticamente desde a fundação da WEB. Ele ocorre quando, um site malicioso força o navegador do usuário a realizar requests arbitrárias em um aplicativo WEB que ele esteja autenticado. Para que este ataque ocorra é esperado que a vítima esteja logada em sua conta e acesse o link malicioso.
 
 ![](https://i.imgur.com/kq6Tq54.png)
 ###### Fonte: https://www.infosec.com.br/wp-content/uploads/2017/07/cross-site-request-forgery.png
@@ -14,7 +14,7 @@ Para um melhor entendimento desta vulnerabilidade, vou dar um exemplo.
 2. Recebe um link no email e o acessa.
 3. Percebe que sumiram $1000 da sua conta.
 
-Como isso funcionou? Simples, ao fazer login no  banco, o usuário recebe cookies do servidor, os mesmos são anexados em todas as requests feitas ao banco, independente da origem delas. Portanto, se o atacante analisar como funciona o mecanismo de transferência de valores o mesmo pode reproduzí-lo em seu site malicioso, assim quando um cliente, autenticado, acessá-lo sofrerá o ataque.
+Como isso funcionou? Simples, ao fazer login no  banco, o usuário recebe cookies do servidor, os mesmos são anexados em todas as requests feitas ao banco, independente da origem delas. Portanto, se o atacante analisar como funciona o mecanismo de transferência de valores o mesmo pode reproduzi-lo em seu site malicioso, assim quando um cliente, autenticado, acessá-lo sofrerá o ataque.
 
 Na prática o ataque funcionaria da seguinte forma:
 
@@ -65,15 +65,15 @@ O atacante então, poderia criar uma página parecida com esta:
 </html>
 ```
 
-Esta página funciona com um [formulário](https://github.com/T635/DI.WE.H/blob/master/Hypertext%20Markup%20Language%20-%20HTML.md), nele inserimos os atributos method, lá inserimos o tipo de request, definimos o action que é basicamente o link para onde a request deve ser enviada, definimos o id para identificá-lo em nosso código javascript, e por último definimos o enctype que é o Content-Type da request.Nas tags input, definimos o nome e o valor, isso será indexado no body da nossa request, da seguinte forma:```para=thiago&montante=1000``` o "&" é usado para separar dois inputs.Ao acessar esta página a vitíma envia uma request post para o banco, e indexa seu cookie, sofrendo assim, o ataque.
+Esta página funciona com um [formulário](https://github.com/T635/DI.WE.H/blob/master/Hypertext%20Markup%20Language%20-%20HTML.md), nele inserimos os atributos method, lá inserimos o tipo de request, definimos o action que é basicamente o link para onde a request deve ser enviada, definimos o id para identificá-lo em nosso código javascript, e por último definimos o enctype que é o Content-Type da request.Nas tags input, definimos o nome e o valor, isso será indexado no body da nossa request, da seguinte forma:```para=thiago&montante=1000``` o "&" é usado para separar dois inputs.Ao acessar esta página a vítima envia uma request post para o banco, e indexa seu cookie, sofrendo assim, o ataque.
 
 #### Nem tudo são rosas...
 
-Com a disseminação desse tipo de ataque foram criadas diversas políticas de proteção contra ele, sendo a mais conhecida o same origin policy, nele o navegador impede que requests ou recursos sejam solcitados entre um site, e por exemplo, um iframe contido nele.Para que uma request, seja de fato feita, o site e o iframe devem ter a mesma url, o mesmo protocolo-http/https, e a mesma [porta](encurtador.com.br/vCQW1). 
+Com a disseminação desse tipo de ataque foram criadas diversas políticas de proteção contra ele, sendo a mais conhecida o same origin policy, nele o navegador impede que requests ou recursos sejam solicitados entre um site, e por exemplo, um iframe contido nele.Para que uma request, seja de fato feita, o site e o iframe devem ter a mesma url, o mesmo protocolo-http/https, e a mesma [porta](encurtador.com.br/vCQW1). 
 
 Essa proteção foi afrouxada com a chegada a política de CORS, ou compartilhamento de recursos de origem cruzada, nela sites com urls, protocolos e até portas diferentes podem se comunicar e trocar recursos, para isso o servidor define um cabeçalho chamado ```Access-Control-Allow-Origin```, ele define se os recursos podem ser compartilhados com a Origin fornecida,mesmo não sendo a maneira mais segura de se proteger contra CSRF, ainda assim é melhor do que aceitar qualquer request.
 
-No entanto, não são todas as requests que "ativam" o CORS, as mais simples como as citadas acima passam sem problemas por ele.
+No entanto, não são todas as requests que "ativam" o CORS, as mais simples como as citadas acima passam sem problemas por ele, o content-type do tipo application-json, já é considerado algo malicioso e digno da atenção do CORS.
 
 ### Exemplo:
 
@@ -108,7 +108,7 @@ O report todo pode ser lido [aqui](https://hackerone.com/reports/111216).
 
 Para explorar esta falha o pesquisador deve estar atento aos funcionamento dos processos mais perigosos como, remoção de conta, troca de email e troca de senha, analisar como funcionam e tentar reproduzi-los em seu site malicioso. 
 
-Alguns problemas podem ser encontrados ao tentar explorar esta vulnerabilidade, os principais são, Content-Type diferentes ou CSRF token, o segundo é um token aleatório e único gerado pelo servidor e que fica salvo na sessão do usuário, ele geralmente fica em um input hidden e é enviado e verificado em toda a requisicão; infelizmente não há muitas formas de burlá-lo, o pesquisador deve apenas conferir se ele está implementado corretamente ou seja, se o servidor está realmente verificando o valor, para isto, basta troca-lo por um valor parecido. 
+Alguns problemas podem ser encontrados ao tentar explorar esta vulnerabilidade, os principais são, Content-Type diferentes ou CSRF token, o segundo é um token aleatório e único gerado pelo servidor e que fica salvo na sessão do usuário, ele geralmente fica em um input hidden e é enviado e verificado em toda a requisição; infelizmente não há muitas formas de burlá-lo, o pesquisador deve apenas conferir se ele está implementado corretamente ou seja, se o servidor está realmente verificando o valor, para isto, basta troca-lo por um valor parecido. 
 
 O problema do Content-Type ocorre quando ele é do tipo application/json, os formulários HTTP atualmente não permitem este cabeçalho aceitando apenas, text/plain, multipart/form-data e application/x-www-form-urlencoded, outro método seria usar requests javascript para mudar o Content-Type, mas isso ativa o CORS e impede a request de ser feita.Para tentar burlá-lo o pesquisador deve verificar se o servidor valida o Content-Type, ou não, caso valide o mesmo pode tentar usar um flash + 307 redirection, mas não irei comentá-lo aqui pois flash applications não funcionaram mais após dezembro de 2020; caso não haja validação, o pesquisador pode usar um Content-Type text/plain e reproduzir um json no body da request. Exemplo:
 

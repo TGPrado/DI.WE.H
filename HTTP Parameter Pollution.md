@@ -16,9 +16,9 @@ No artigo sobre Client e Server side expliquei como o servidor faz para pegar os
 #### Server-Side:
 Imagine que ao fazer uma transferência no seu banco você envie uma request do tipo GET para: http://banco.com/transfer?para=thiago&valor=1000 e que o banco faça uma request, interna, a qual você não tem acesso, para http://pagamentos.com:7979/?de=carlos&para=thiago&valor=1000 . Tendo isto em vista, o atacante pode simplesmente adicionar, ao fim de sua request "&de=henrique", assim quando a request interna for feita, ela ficará assim: http://pagamentos.com:7979/?de=carlos&para=thiago&valor=1000&de=henrique , caso o sevidor seja um php + apache o parâmetro "de" usado será o último, logo a transferência será feita no nome de henrique. 
 
-Caso o atacante esteja usando uma proxy para modificar as requests é necessário fazer a codificação de alguns caracteres nas urls, caso isto não seja feito o servidor pode não entender o conteúdo enviado, a tabela abaixo mostra essa codificação.
+Caso o atacante esteja usando uma proxy para modificar as requests é necessário fazer a codificação de alguns caracteres especiais nas urls, caso isto não seja feito o servidor pode não entender o conteúdo enviado, a tabela abaixo mostra essa codificação.
 
-Caracter | Codificação 	|	Caracter | Codificação|
+Carácter | Codificação 	|	Carácter | Codificação|
 -------- | -------------|   -------- | -----------|
 espaço   |     ```%20```			|	```#```  |     ```%23```    |
 ```$```        |     ```%24```      |	   ```%```     |	   ```%25```	  |
@@ -34,7 +34,7 @@ espaço   |     ```%20```			|	```#```  |     ```%23```    |
 ```+```        |     ```%2B```		|	   ```,```     |     ```%2C```	  |
 
 	
-Esta vulnerabilidade fica mais interessante quando ela é atrelada a outras,por exemplo, o atacante pode manipular os parâmetros para "bypassar" filtros e injetar códigos SQL, que é uma linguagem de programação usada para lidar com banco de dados, então imagine o atacante retornar toda a base de usuarios e senhas de uma rede social, esta vulnerabilidade tem um nome específico: SQL injection, ela será explicada mais para frente.
+Esta vulnerabilidade fica mais interessante quando ela é atrelada a outras,por exemplo, o atacante pode manipular os parâmetros para "bypassar" filtros e injetar códigos SQL, que é uma linguagem de programação usada para lidar com banco de dados, então imagine o atacante retornar toda a base de usuários e senhas de uma rede social, esta vulnerabilidade tem um nome específico: SQL injection, ela será explicada mais para frente.
 
 #### Client-Side:
 
@@ -47,7 +47,7 @@ Vamos levar em conta o seguinte código para este exemplo:
 <a href="/page.php?action=view&par='.<?=$val?>.'">View Me!</a>
 ```
 
-Na primeira linha é requerido o parâmetro 'par' e o mesmo é transformado em sua respectiva entities html, explarei sobre ela no próximo artigo, entretanto é necessário saber que elas são usadas para transformar caracteres especiais do html em caracteres com o mesmo valor visual mas com significados diferentes.
+Na primeira linha é requerido o parâmetro 'par' e o mesmo é transformado em sua respectiva entities html, explicarei sobre ela no próximo artigo, entretanto é necessário saber que elas são usadas para transformar caracteres especiais do html em caracteres com o mesmo valor visual mas com significados diferentes.
 Enfim, na segunda linha é criado um link, o qual tem dois parâmetros o action com o valor de view, e o  'par' com o valor do parâmetro enviado, podemos então substituir 'par' por algo como par=123%26action%3Dedit, assim quando o valor for adquirido pelo ```$_GET``` e o link for criado ele ficará assim: 
 ```<a href="/page.php?action=view&par=123&amp;action=edit">View Me!</a>```.
 

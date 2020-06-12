@@ -1,7 +1,7 @@
 # SQL Injection
 
 ### O que é:
-Esta vulnerabilidade ocorre quando, advinhem, o desenvolvedor não sanitiza os dados enviados; quando encontrada o atacante pode injetar códigos de modo que o mesmo pode, retornar toda a base de dados, modificar o banco de dados e excluí-los. Imaginem o problema que um atacante pode gerar ao retornar todo o banco de dados de uma rede social, de uma folha de pagamento, ou até modificar o valor que receberá.
+Esta vulnerabilidade ocorre quando, adivinhem, o desenvolvedor não sanitiza os dados enviados; quando encontrada o atacante pode injetar códigos de modo que o mesmo pode, retornar toda a base de dados, modificar o banco de dados e excluí-los. Imaginem o problema que um atacante pode gerar ao retornar todo o banco de dados de uma rede social, de uma folha de pagamento, ou até modificar o valor que receberá.
 
 ### SQL:
 
@@ -111,11 +111,63 @@ O hacker recebeu um bounty de $3705 pela falha.
 
 ### Como explorar:
 
-Para explorar tente substituir o valor dos parâmetros por valores maliciosos, as vezes uma simples ```'``` pode te dar a indicação da falha; use e abuse dos caracteres de comentários, eles devem ser usados para tentar gerar uma consulta correta excluindo o restante da query, também é interessante freezar que o pesquisador pode simplesmente fechar o que foi passado, finalizar a consulta com um ponto e vírgula e criar outra query exemplo: ```";select * from teste;--```.
+Para explorar tente substituir o valor dos parâmetros por valores maliciosos, as vezes uma simples ```'``` pode te dar a indicação da falha; use e abuse dos caracteres de comentários, eles devem ser usados para tentar gerar uma consulta correta excluindo o restante da query, também é interessante freezar que o pesquisador pode simplesmente fechar o que foi passado, finalizar a consulta com um ponto e vírgula e criar outra query exemplo: ```';select * from teste;--```.
 
 Fique atento a possíveis falhas do tipo Blind, não desista caso não consiga retornar valores, elas também são bastante perigosas; a função SLEEP,é sua amiga neste caso.
 
 Não foi dado exemplos mas esta falha pode ser encontrada em formulários enviados via post, fique atento a eles também, como páginas de login, mudança de senha ou alteração de email.
 
+Na maioria dos casos, não é possível gerar uma dupla pesquisa como citado acima, por isto, use palavras reservadas como o UNION, só que existe um problema, ele só pode ser usado quando a quantidade de colunas usadas na query original for igual a quantidade requisitada no UNION vou dar um exemplo.
 
-Por último mas não menos importante, use também outras palavras reservadas do sql, como UNION, para juntar mais de uma query.
+Imagine que esta é a query, gerada no php e enviada para o banco de dados: 
+
+```php
+$query = "SELECT user, password FROM clients WHERE user='" . $user . "' and password='". $password ."';";
+```
+
+Caso criássemos uma nova consulta usando o UNION e esta tivesse somente uma coluna como no exemplo abaixo, seria gerado o seguinte erro:
+
+```
+the used select statements have a different number of columns
+```
+
+Este é o payload problemático:
+
+```
+password= ' UNION SELECT null;--
+```
+
+O null acima significa um valor na primeira coluna, como há duas o erro é gerado.
+
+O payload que funciona é parecido com este:
+
+```
+password= ' UNION SELECT null,null;--
+```
+
+Agora você deve estar se perguntando: "como eu posso saber o número de colunas de uma query?"
+
+Há basicamente dois modos para isto: 
+
+O primeiro é usando as palavras reservadas ```ORDER BY```, elas são usadas para ordenar uma consulta conforme sua coluna, usando o exemplo parecido com o acima, tem-se:
+
+```sql
+SELECT name,password FROM clients ORDER BY name;
+```
+
+Esta consulta  retorna as colunas name e password ordenadas pela coluna name de maneira descendente.
+
+Isto também pode ser feito assim:
+
+```sql
+SELECT name,password FROM clients ORDER BY 1;
+```
+
+Está consulta também ordenará os resultados pela coluna name, como você já deve imaginar pode-se usar o ORDER BY e chutar valores inteiros até a consulta funcionar,indicando que acertamos o número de colunas.
+
+O outro método é usando o SELECT e NULL:
+
+```sql
+SELECT name,password FROM clients UNION SELECT NULL,NULL;
+```
+A consulta acima retornaria os dados corretamente pois a primeira coluna foi preenchida com um valor NULL e a última também, caso a query usasse mais de duas colunas ela retornaria um erro, assim saberíamos que deve-se adicionar outro NULL.

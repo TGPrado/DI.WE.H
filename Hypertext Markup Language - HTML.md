@@ -44,7 +44,7 @@ No html existem diversas tags, todas elas podem ser encontradas em https://www.w
 
 Dentre as tags html, existem algumas que usaremos muito daqui para frente, sendo as principais:
 
-```<script></script>``` : Como dito anteriormente, html nao é uma linguagem de programação, mas isso nao significa que não possamos inserir uma linguagem de programação nela, com essa tag podemos injetar códigos Javascript para tornar a página mais dinâmica.
+```<script></script>``` : Como dito anteriormente, html não é uma linguagem de programação, mas isso não significa que não possamos inserir uma linguagem de programação nela, com essa tag podemos injetar códigos Javascript para tornar a página mais dinâmica.
 
 ```<img>``` : Com esta tag podemos inserir imagens na nossa página, para isso usamos ```<img src="localização da imagem">``` onde, src é o source ou código/localizacao da imagem.
 

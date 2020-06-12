@@ -79,6 +79,8 @@ A url vulnerável era esta: https://v.shopify.com/last_shop?shop=krankopwnz.mysh
 O pesquisador injetou ```%0d%0aContent-Length:%200%0d%0a%0d%0aHTTP/1.1%20200%20OK%0d%0aContent-Type:%20te\
 xt/html%0d%0aContent-Length:%2019%0d%0a%0d%0a<html>deface</html>``` após o fim da url, gerando assim uma página com o deface.
 
+Obviamente o pesquisador poderia gerar algo mais complexo, como uma página de login ou um XSS,entretanto para a PoC isto era o suficiente.
+
 PoC:![](https://i.imgur.com/0lEiNeb.png)
 
 ### Como explorar:
