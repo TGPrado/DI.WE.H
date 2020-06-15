@@ -1,4 +1,4 @@
-# DI.WE.H
+	# DI.WE.H
 ##### O Dicionario do Web Hacking tem como objetivo agregar o maior conteúdo possível, em português, sobre web hacking. Para isto, estarei colocando o material em ordem crescente de dificuldade.
 
 
@@ -12,6 +12,7 @@
 * [Cross-Site Scripting](Cross-Site%20Scripting.md)
 * [Carriage Return Line Feed/HTTP Response Splitting](Carriage%20Return%20Line%20Feed.md)
 * [Insecure Direct Object Reference](Insecure%20Direct%20Object%20Reference.md)
+* [Subdomain Takeover](Subdomain%20Takeover.md)
 * [SQL Injection](SQL%20Injection.md)
 * [XML External Entity](XML%20External%20Entity.md)
 * [Template Injection](Template%20Injection.md)
