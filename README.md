@@ -18,3 +18,4 @@
 * [Template Injection](Template%20Injection.md)
 * [Server Side Request Forgery](Server%20Side%20Request%20Forgery.md)
 * [Remote Code Execution](Remote%20Code%20Execution.md)
+* [Race Condition](Race%20Condition.md)
