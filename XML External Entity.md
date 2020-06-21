@@ -155,7 +155,7 @@ ao enviar este payload o pesquisador percebeu requests chegando em seu servidor 
 
 A princípio o facebook não conseguiu reproduzir a falha, por isto Mohamed quase não recebeu o bounty, mas após algumas trocas de emails a rede social encontrou e corrigiu a falha.
 
-O pesquisador recebeu $6300 por esta falha, o valor foi menor que o de 2013 pois lá era possível escalar a falha para um Remote Code Execution irei explicar RCE com XXE no próximo artigo.
+O pesquisador recebeu $6300 por esta falha, o valor foi menor que o de 2013 pois lá era possível escalar a falha para um Remote Code Execution.
 
 ### Como explorar:
 

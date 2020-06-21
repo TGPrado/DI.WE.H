@@ -19,3 +19,4 @@
 * [Server Side Request Forgery](Server%20Side%20Request%20Forgery.md)
 * [Remote Code Execution](Remote%20Code%20Execution.md)
 * [Race Condition](Race%20Condition.md)
+* [OAuth Vulnerabilities](OAuth%20Vulnerabilities.md)

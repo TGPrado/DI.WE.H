@@ -12,7 +12,7 @@ Isto pode levar à curtidas infinitas em uma postagem na sua rede social ou à r
 
 Acredito que antes de definir assincronismo devo definir sua diferença comparada ao sincronismo, então vamos lá!
 
-O último ocorre quando uma aplicação precisa primeiro executar uma sequencia de comandos inteira para depois partir para outros comandos, já o assincronismo ocorre quando pode-se executar comandos mesmo sem o anterior ter sido finalizado este tipo de programação é usada para diminuir a velocidade de execução de programas, para isto divide-se sua execução em diversas 'thread' ou processos.
+O último ocorre quando uma aplicação precisa primeiro executar uma sequencia de comandos inteira para depois partir para outros comandos, já o assincronismo ocorre quando pode-se executar comandos mesmo sem o anterior ter sido finalizado, este tipo de programação é usada para diminuir a velocidade de execução de programas, para isto divide-se sua execução em diversas 'thread' ou processos.
 
 ![](https://imgur.com/xjZ22qq.png)
 ###### source:https://imgur.com/xjZ22qq.png
@@ -48,8 +48,8 @@ def Primeiro():
     while x < 100000000:
     	x += 1
     return(print('Primeiro'))
-t = threading.Thread(target=Primeiro)
-t.start()
+t = threading.Thread(target=Primeiro) # Aqui definimosqual funcão deve ser executada ao iniciar a thread
+t.start() # iniciamos a thread
 print('Segundo')    
 ```
 Neste caso tivemos um problema pois a saída foi esta:
@@ -77,7 +77,7 @@ Imagine o seguinte cenário:
 8. Você atualiza sua conta e seu saldo ainda é de US $ 0.
 
 
-Como isto ocorreu? Simples, o banco faz somente uma validação inicial do valor em sua conta, e como a primeira solicitação ainda não havia terminado quando a segunda foi feita, ela retornou verdadeiro.
+Como isto ocorreu? Simples, o banco faz somente uma validação inicial do valor em sua conta, e como a primeira solicitação ainda não havia terminado quando a segunda foi feita, ela retornou verdadeiro e o valor foi transferido.
 
 Então como podem ver, a falha ocorre quando dois processos simultâneos acessam necessitam e modificam o mesmo recurso.
 
@@ -85,9 +85,9 @@ Então como podem ver, a falha ocorre quando dois processos simultâneos acessam
 
 A falha deste exemplo foi descoberta no programa de bug bounty da empresa hackerone, não foi revelado quanto o hacker recebeu por ela, mas acredito que ela seja muito interessante por isto a escolhi.
 
-Como citado no começo no primeiro artigo para se hackear algo deve-se entender primeiro como aquilo funciona, por exemplo este race condition foi achado no sistema de convite à bug bounties, para encontra-lo o pesquisador imaginou como ele funcionaria e chegou as seguintes conclusões:
+Como citado no começo no primeiro artigo para se hackear algo deve-se entender primeiro como aquilo funciona, por exemplo este race condition foi achado no sistema de convite à bug bounties, para encontrá-lo o pesquisador imaginou como ele funcionaria e chegou as seguintes conclusões:
 
-1. Como os convites são únicos, e provavelmente será feito uma pesquisa em um banco de dados para verificação da existência do mesmo.
+1. Os convites são únicos, logo será feito uma pesquisa em um banco de dados para verificação da existência do mesmo.
 2. Depois disto, será adicionado uma permissão à conta do usuário.
 3. Por fim o token será excluído da base de dados, para ninguém mais usá-lo.
 
