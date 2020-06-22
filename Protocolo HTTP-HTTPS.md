@@ -53,7 +53,7 @@ Entendido o sistema cliente-servidor, veremos agora exemplos de requisições (*
 1. O método da request, que pode ser:
 
 > <h5>GET - O cliente requisita algum recurso, como uma página ou uma imagem.</h5>
-> <h5>HEAD - Muito parecido com o GET, porém aqui o cliente requisita somente o cabeçalho (*header*) da página.</h5>
+> <h5>HEAD - Muito parecido com o GET, porém aqui o cliente requisita somente o cabeçalho header da página.</h5>
 > <h5>POST - O cliente está enviando dados que estão contidos no corpo da request.</h5>
 > <h5>PUT - Parecido com o POST, diferindo apenas em como o servidor irá lidar com os dados enviados. Por exemplo: Caso seja necessário atualizar os dados de um usuário, usa-se o método PUT, pois com ele o servidor irá sobrescrever os dados antigos com os novos, gerando somente um registro, com o POST o servidor cria vários registros, um para cada request feita.</h5>
 > <h5>DELETE - O cliente requisita que algum recurso seja excluído do servidor.</h5>
@@ -107,7 +107,7 @@ As seguintes linhas mostram cabeçalhos comuns das respostas, são eles:
 > <h5>Etag: Identifica uma versão específica de algum recurso. Permite assim que o servidor não envie a resposta completa, proporcionando uma maior velocidade.</h5>
 > <h5>Server: Define informações acerca do servidor.</h5>
 > <h5>Set-Cookie: Usado para o servidor enviar cookies para o cliente.</h5>
-> <h5>X-Frame-Options: Indica se o navegador deve ou não renderizar uma página em ```<frame>```,```<iframe>```.</h5>
+> <h5>X-Frame-Options: Indica se o navegador deve ou não renderizar uma página em ```<iframe>```.</h5>
 
 ### HTTP vs. HTTPS:
 
